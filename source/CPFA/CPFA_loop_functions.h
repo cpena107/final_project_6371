@@ -66,6 +66,9 @@ class CPFA_loop_functions : public argos::CLoopFunctions
 		double getRateOfLayingPheromone();
 		double getRateOfPheromoneDecay();
 
+		//adding print function djg
+		void printFoodLocation();
+
 	protected:
 
 		void setScore(double s);
@@ -111,6 +114,11 @@ class CPFA_loop_functions : public argos::CLoopFunctions
 		argos::Real NestRadiusSquared;
 		argos::Real NestElevation;
 		argos::Real SearchRadiusSquared;
+
+		// adding list of food location and other variables djg
+		std::vector<argos::CVector2> FoodLocation;
+		std::vector<pair<int,bool>> typeSearch;
+		std::vector<int> states;
 
 		/* list variables for food & pheromones */
 		std::vector<argos::CVector2> FoodList;

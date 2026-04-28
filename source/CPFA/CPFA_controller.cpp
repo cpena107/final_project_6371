@@ -149,12 +149,16 @@ void CPFA_controller::CPFA() {
 	switch(CPFA_state) {
 		// depart from nest after food drop off or simulation start
 		case DEPARTING:
+			// adding departing state to vector djg
+			LoopFunctions->states.push_back(0);
 			//argos::LOG << "DEPARTING" << std::endl;
 			//SetIsHeadingToNest(false);
 			Departing();
 			break;
 		// after departing(), once conditions are met, begin searching()
 		case SEARCHING:
+			// adding searching state to vector djg
+			LoopFunctions->states.push_back(1);
 			//argos::LOG << "SEARCHING" << std::endl;
 			//SetIsHeadingToNest(false);
 			if((SimulationTick() % (SimulationTicksPerSecond() / 2)) == 0) {
@@ -163,11 +167,15 @@ void CPFA_controller::CPFA() {
 			break;
 		// return to nest after food pick up or giving up searching()
 		case RETURNING:
+			// adding returning state to vector djg
+			LoopFunctions->states.push_back(2);
 			//argos::LOG << "RETURNING" << std::endl;
 			//SetIsHeadingToNest(true);
 			Returning();
 			break;
 		case SURVEYING:
+			// adding surveying state to vector djg
+			LoopFunctions->states.push_back(3);
 			//argos::LOG << "SURVEYING" << std::endl;
 			//SetIsHeadingToNest(false);
 			Surveying();
@@ -309,7 +317,9 @@ void CPFA_controller::Departing()
                SetFidelityList();
                //log_output_stream << "After SetFidelityList: " << SiteFidelityPosition << endl;
                //log_output_stream.close();
+			   
           }
+		  
      }
 
 
@@ -365,6 +375,11 @@ void CPFA_controller::Searching() {
           argos::CRadians angle2(GetHeading());
           argos::CRadians turn_angle(angle1 + angle2);
           argos::CVector2 turn_vector(SearchStepSize, turn_angle);
+
+			// adding what type of search to typeSearch vector
+			//   printf("UNI search");
+			LoopFunctions->typeSearch.emplace_back(0,false);
+			
       
           //argos::LOG << "UNINFORMED SEARCH: rotation: " << angle1 << std::endl;
           //argos::LOG << "UNINFORMED SEARCH: old heading: " << angle2 << std::endl;
@@ -388,6 +403,9 @@ void CPFA_controller::Searching() {
          }
          // informed search
          else{
+				// adding what type of search to typesearch djg
+			  	// printf("INF search");
+			  	LoopFunctions->typeSearch.emplace_back(1,false);
           
               SetIsHeadingToNest(false);
               
@@ -657,6 +675,13 @@ void CPFA_controller::SetHoldingFood() {
       if(IsHoldingFood()) {
          //SetIsHeadingToNest(true);
          //SetTarget(LoopFunctions->NestPosition);
+
+		 // finding currently location of the robot : DJG 4/25/26
+		 argos::CVector2 pos2D(GetPosition());
+		 //  printf("Robot found food at : (%f, %f)\n", pos2D.GetX(), pos2D.GetY());
+		 //updating FoodLocation 
+		 LoopFunctions->FoodLocation.emplace_back(pos2D.GetX(), pos2D.GetY());
+
          LoopFunctions->FoodList = newFoodList;
          LoopFunctions->FoodColoringList = newFoodColoringList; //qilu 09/12/2016
          SetLocalResourceDensity();

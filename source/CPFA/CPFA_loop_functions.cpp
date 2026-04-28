@@ -227,6 +227,10 @@ bool CPFA_loop_functions::IsExperimentFinished() {
 void CPFA_loop_functions::PostExperiment() {
 	  
      printf("%f, %f, %lu\n", score, getSimTimeInSeconds(), RandomSeed);
+	 float fpts = score/(getSimTimeInSeconds()/60);
+	 printf("food per tick/ min: %f \n", fpts);
+	 printf("NestPosition (%f , %f): \n" , NestPosition.GetX(), NestPosition.GetY());
+	 printFoodLocation();
        
                   
     if (PrintFinalScore == 1) {
@@ -630,4 +634,52 @@ void CPFA_loop_functions::ConfigureFromGenome(Real* g)
 	RateOfPheromoneDecay              = g[6];
 }
 
+void CPFA_loop_functions::printFoodLocation(){
+	float avgX = 0;
+	float avgY = 0;
+	float counter = 1;
+	for(const argos::CVector2& food : FoodLocation) {
+		avgX += food.GetX();
+		avgY += food.GetY();
+    	// printf("Food at (%f, %f)\n", food.GetX(), food.GetY());
+		counter++;
+	}
+	avgX = avgX/counter;
+	avgY = avgY/counter;
+	printf(" Avg Food at (%f, %f)\n", avgX, avgY);
+
+	// type of search
+	int a = 0;
+	int b = 0;
+	for(auto x : typeSearch){
+		if(x.first == 0){
+			a++;
+		}
+		else{
+			b++;
+		}
+		
+	}
+	// pheromone or infidelity
+	printf("Uniformed search : %i , Informed search : %i \n", a , b);
+	a = 0;
+	b = 0;
+	int c = 0;
+	int d = 0;
+	for(auto x : states){
+		if(x == 0){
+			a++;
+		}
+		else if(x == 1){
+			b++;
+		}
+		else if(x == 2){
+			c++;
+		}
+		else{
+			d++;
+		}
+	}
+	printf("departing: %i, searching: %i, returning: %i, surveying: %i \n", a,b,c,d);
+}
 REGISTER_LOOP_FUNCTIONS(CPFA_loop_functions, "CPFA_loop_functions")

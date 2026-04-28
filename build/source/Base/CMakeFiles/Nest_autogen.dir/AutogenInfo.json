@@ -1,25 +1,28 @@
 {
-	"BUILD_DIR" : "/home/qlu/Documents/random_drop_CPFA/build/source/Base/Nest_autogen",
-	"CMAKE_BINARY_DIR" : "/home/qlu/Documents/random_drop_CPFA/build",
-	"CMAKE_CURRENT_BINARY_DIR" : "/home/qlu/Documents/random_drop_CPFA/build/source/Base",
-	"CMAKE_CURRENT_SOURCE_DIR" : "/home/qlu/Documents/random_drop_CPFA/source/Base",
+	"BUILD_DIR" : "/mnt/c/Users/josia/Downloads/final_project_6371/build/source/Base/Nest_autogen",
+	"CMAKE_BINARY_DIR" : "/mnt/c/Users/josia/Downloads/final_project_6371/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "/mnt/c/Users/josia/Downloads/final_project_6371/build/source/Base",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/mnt/c/Users/josia/Downloads/final_project_6371/source/Base",
 	"CMAKE_EXECUTABLE" : "/usr/bin/cmake",
-	"CMAKE_LIST_FILES" : [ "/home/qlu/Documents/random_drop_CPFA/source/Base/CMakeLists.txt" ],
-	"CMAKE_SOURCE_DIR" : "/home/qlu/Documents/random_drop_CPFA",
+	"CMAKE_LIST_FILES" : 
+	[
+		"/mnt/c/Users/josia/Downloads/final_project_6371/source/Base/CMakeLists.txt"
+	],
+	"CMAKE_SOURCE_DIR" : "/mnt/c/Users/josia/Downloads/final_project_6371",
 	"DEP_FILE" : "",
 	"DEP_FILE_RULE_NAME" : "",
 	"HEADERS" : 
 	[
 		[
-			"/home/qlu/Documents/random_drop_CPFA/source/Base/Nest.h",
+			"/mnt/c/Users/josia/Downloads/final_project_6371/source/Base/Nest.h",
 			"Mu",
 			"EWIEGA46WW/moc_Nest.cpp",
 			null
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
-	"INCLUDE_DIR" : "/home/qlu/Documents/random_drop_CPFA/build/source/Base/Nest_autogen/include",
-	"MOC_COMPILATION_FILE" : "/home/qlu/Documents/random_drop_CPFA/build/source/Base/Nest_autogen/mocs_compilation.cpp",
+	"INCLUDE_DIR" : "/mnt/c/Users/josia/Downloads/final_project_6371/build/source/Base/Nest_autogen/include",
+	"MOC_COMPILATION_FILE" : "/mnt/c/Users/josia/Downloads/final_project_6371/build/source/Base/Nest_autogen/mocs_compilation.cpp",
 	"MOC_DEFINITIONS" : 
 	[
 		"GL_SILENCE_DEPRECATION",
@@ -27,8 +30,6 @@
 		"QT_CORE_LIB",
 		"QT_GUI_LIB",
 		"QT_NO_DEBUG",
-		"QT_OPENGLWIDGETS_LIB",
-		"QT_OPENGL_LIB",
 		"QT_WIDGETS_LIB"
 	],
 	"MOC_DEPEND_FILTERS" : 
@@ -40,20 +41,16 @@
 	],
 	"MOC_INCLUDES" : 
 	[
-		"/home/qlu/Documents/random_drop_CPFA/build/source/Base",
-		"/home/qlu/Documents/random_drop_CPFA/source/Base",
-		"/home/qlu/Documents/random_drop_CPFA",
+		"/mnt/c/Users/josia/Downloads/final_project_6371/build/source/Base",
+		"/mnt/c/Users/josia/Downloads/final_project_6371/source/Base",
+		"/mnt/c/Users/josia/Downloads/final_project_6371",
 		"/usr/include/Headers",
-		"/usr/include/x86_64-linux-gnu/qt6/QtDBus",
-		"/usr/include/lua5.3",
-		"/home/qlu/Documents/random_drop_CPFA/source",
-		"/usr/include/x86_64-linux-gnu/qt6/QtWidgets",
-		"/usr/include/x86_64-linux-gnu/qt6",
-		"/usr/include/x86_64-linux-gnu/qt6/QtCore",
-		"/usr/include/x86_64-linux-gnu/qt6/QtGui",
-		"/usr/include/x86_64-linux-gnu/qt6/QtOpenGLWidgets",
-		"/usr/include/x86_64-linux-gnu/qt6/QtOpenGL",
-		"/usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++",
+		"/mnt/c/Users/josia/Downloads/final_project_6371/source",
+		"/usr/include/x86_64-linux-gnu/qt5",
+		"/usr/include/x86_64-linux-gnu/qt5/QtWidgets",
+		"/usr/include/x86_64-linux-gnu/qt5/QtGui",
+		"/usr/include/x86_64-linux-gnu/qt5/QtCore",
+		"/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++",
 		"/usr/local/include",
 		"/usr/include",
 		"/usr/include/c++/11",
@@ -67,27 +64,27 @@
 	"MOC_PATH_PREFIX" : false,
 	"MOC_PREDEFS_CMD" : 
 	[
-		"/bin/c++",
+		"/usr/bin/c++",
 		"-dM",
 		"-E",
 		"-c",
 		"/usr/share/cmake-3.22/Modules/CMakeCXXCompilerABI.cpp"
 	],
-	"MOC_PREDEFS_FILE" : "/home/qlu/Documents/random_drop_CPFA/build/source/Base/Nest_autogen/moc_predefs.h",
+	"MOC_PREDEFS_FILE" : "/mnt/c/Users/josia/Downloads/final_project_6371/build/source/Base/Nest_autogen/moc_predefs.h",
 	"MOC_RELAXED_MODE" : false,
 	"MOC_SKIP" : [],
 	"MULTI_CONFIG" : false,
-	"PARALLEL" : 8,
-	"PARSE_CACHE_FILE" : "/home/qlu/Documents/random_drop_CPFA/build/source/Base/CMakeFiles/Nest_autogen.dir/ParseCache.txt",
-	"QT_MOC_EXECUTABLE" : "/usr/lib/qt6/libexec/moc",
+	"PARALLEL" : 6,
+	"PARSE_CACHE_FILE" : "/mnt/c/Users/josia/Downloads/final_project_6371/build/source/Base/CMakeFiles/Nest_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "/usr/lib/qt5/bin/moc",
 	"QT_UIC_EXECUTABLE" : "",
-	"QT_VERSION_MAJOR" : 6,
-	"QT_VERSION_MINOR" : 2,
-	"SETTINGS_FILE" : "/home/qlu/Documents/random_drop_CPFA/build/source/Base/CMakeFiles/Nest_autogen.dir/AutogenUsed.txt",
+	"QT_VERSION_MAJOR" : 5,
+	"QT_VERSION_MINOR" : 15,
+	"SETTINGS_FILE" : "/mnt/c/Users/josia/Downloads/final_project_6371/build/source/Base/CMakeFiles/Nest_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
 		[
-			"/home/qlu/Documents/random_drop_CPFA/source/Base/Nest.cpp",
+			"/mnt/c/Users/josia/Downloads/final_project_6371/source/Base/Nest.cpp",
 			"Mu",
 			null
 		]

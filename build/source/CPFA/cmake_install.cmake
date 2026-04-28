@@ -1,4 +1,4 @@
-# Install script for directory: /home/qlu/Documents/random_drop_CPFA/source/CPFA
+# Install script for directory: /mnt/c/Users/josia/Downloads/final_project_6371/source/CPFA
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,6 +39,6 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "/bin/objdump")
+  set(CMAKE_OBJDUMP "/usr/bin/objdump")
 endif()
 

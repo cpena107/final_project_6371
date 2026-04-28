@@ -1,7 +1,7 @@
 source/Base/CMakeFiles/BaseController.dir/BaseController.cpp.o: \
- /home/qlu/Documents/random_drop_CPFA/source/Base/BaseController.cpp \
+ /mnt/c/Users/josia/Downloads/final_project_6371/source/Base/BaseController.cpp \
  /usr/include/stdc-predef.h \
- /home/qlu/Documents/random_drop_CPFA/source/Base/BaseController.h \
+ /mnt/c/Users/josia/Downloads/final_project_6371/source/Base/BaseController.h \
  /usr/local/include/argos3/core/utility/logging/argos_log.h \
  /usr/local/include/argos3/core/config.h /usr/include/c++/11/iomanip \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
@@ -207,7 +207,7 @@ source/Base/CMakeFiles/BaseController.dir/BaseController.cpp.o: \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
  /usr/include/c++/11/pstl/execution_defs.h \
  /usr/local/include/argos3/core/control_interface/ci_sensor.h \
- /usr/include/lua5.3/lua.h /usr/include/lua5.3/luaconf.h \
+ /usr/include/lua.h /usr/include/luaconf.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h \
  /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
@@ -217,8 +217,7 @@ source/Base/CMakeFiles/BaseController.dir/BaseController.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
  /usr/include/x86_64-linux-gnu/bits/uio_lim.h \
  /usr/include/x86_64-linux-gnu/lua5.3-deb-multiarch.h \
- /usr/include/lua5.3/lualib.h /usr/include/lua5.3/lua.h \
- /usr/include/lua5.3/lauxlib.h \
+ /usr/include/lualib.h /usr/include/lua.h /usr/include/lauxlib.h \
  /usr/local/include/argos3/core/control_interface/ci_actuator.h \
  /usr/local/include/argos3/core/utility/plugins/factory.h \
  /usr/local/include/argos3/core/utility/plugins/factory_impl.h \

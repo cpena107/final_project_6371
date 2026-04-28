@@ -1,4 +1,4 @@
-# Install script for directory: /home/qlu/Documents/random_drop_CPFA
+# Install script for directory: /mnt/c/Users/josia/Downloads/final_project_6371
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,12 +39,12 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "/bin/objdump")
+  set(CMAKE_OBJDUMP "/usr/bin/objdump")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/qlu/Documents/random_drop_CPFA/build/source/cmake_install.cmake")
+  include("/mnt/c/Users/josia/Downloads/final_project_6371/build/source/cmake_install.cmake")
 
 endif()
 
@@ -56,5 +56,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/qlu/Documents/random_drop_CPFA/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/mnt/c/Users/josia/Downloads/final_project_6371/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

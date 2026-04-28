@@ -56,10 +56,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/qlu/Documents/random_drop_CPFA
+CMAKE_SOURCE_DIR = /mnt/c/Users/josia/Downloads/final_project_6371
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/qlu/Documents/random_drop_CPFA/build
+CMAKE_BINARY_DIR = /mnt/c/Users/josia/Downloads/final_project_6371/build
 
 # Utility rule file for CPFA_controller_autogen.
 
@@ -70,8 +70,8 @@ include source/CPFA/CMakeFiles/CPFA_controller_autogen.dir/compiler_depend.make
 include source/CPFA/CMakeFiles/CPFA_controller_autogen.dir/progress.make
 
 source/CPFA/CMakeFiles/CPFA_controller_autogen:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/qlu/Documents/random_drop_CPFA/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC for target CPFA_controller"
-	cd /home/qlu/Documents/random_drop_CPFA/build/source/CPFA && /usr/bin/cmake -E cmake_autogen /home/qlu/Documents/random_drop_CPFA/build/source/CPFA/CMakeFiles/CPFA_controller_autogen.dir/AutogenInfo.json Release
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/mnt/c/Users/josia/Downloads/final_project_6371/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC for target CPFA_controller"
+	cd /mnt/c/Users/josia/Downloads/final_project_6371/build/source/CPFA && /usr/bin/cmake -E cmake_autogen /mnt/c/Users/josia/Downloads/final_project_6371/build/source/CPFA/CMakeFiles/CPFA_controller_autogen.dir/AutogenInfo.json Release
 
 CPFA_controller_autogen: source/CPFA/CMakeFiles/CPFA_controller_autogen
 CPFA_controller_autogen: source/CPFA/CMakeFiles/CPFA_controller_autogen.dir/build.make
@@ -82,10 +82,10 @@ source/CPFA/CMakeFiles/CPFA_controller_autogen.dir/build: CPFA_controller_autoge
 .PHONY : source/CPFA/CMakeFiles/CPFA_controller_autogen.dir/build
 
 source/CPFA/CMakeFiles/CPFA_controller_autogen.dir/clean:
-	cd /home/qlu/Documents/random_drop_CPFA/build/source/CPFA && $(CMAKE_COMMAND) -P CMakeFiles/CPFA_controller_autogen.dir/cmake_clean.cmake
+	cd /mnt/c/Users/josia/Downloads/final_project_6371/build/source/CPFA && $(CMAKE_COMMAND) -P CMakeFiles/CPFA_controller_autogen.dir/cmake_clean.cmake
 .PHONY : source/CPFA/CMakeFiles/CPFA_controller_autogen.dir/clean
 
 source/CPFA/CMakeFiles/CPFA_controller_autogen.dir/depend:
-	cd /home/qlu/Documents/random_drop_CPFA/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/qlu/Documents/random_drop_CPFA /home/qlu/Documents/random_drop_CPFA/source/CPFA /home/qlu/Documents/random_drop_CPFA/build /home/qlu/Documents/random_drop_CPFA/build/source/CPFA /home/qlu/Documents/random_drop_CPFA/build/source/CPFA/CMakeFiles/CPFA_controller_autogen.dir/DependInfo.cmake --color=$(COLOR)
+	cd /mnt/c/Users/josia/Downloads/final_project_6371/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /mnt/c/Users/josia/Downloads/final_project_6371 /mnt/c/Users/josia/Downloads/final_project_6371/source/CPFA /mnt/c/Users/josia/Downloads/final_project_6371/build /mnt/c/Users/josia/Downloads/final_project_6371/build/source/CPFA /mnt/c/Users/josia/Downloads/final_project_6371/build/source/CPFA/CMakeFiles/CPFA_controller_autogen.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : source/CPFA/CMakeFiles/CPFA_controller_autogen.dir/depend
 

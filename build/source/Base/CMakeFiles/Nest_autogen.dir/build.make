@@ -56,10 +56,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/qlu/Documents/random_drop_CPFA
+CMAKE_SOURCE_DIR = /mnt/c/Users/josia/Downloads/final_project_6371
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/qlu/Documents/random_drop_CPFA/build
+CMAKE_BINARY_DIR = /mnt/c/Users/josia/Downloads/final_project_6371/build
 
 # Utility rule file for Nest_autogen.
 
@@ -70,8 +70,8 @@ include source/Base/CMakeFiles/Nest_autogen.dir/compiler_depend.make
 include source/Base/CMakeFiles/Nest_autogen.dir/progress.make
 
 source/Base/CMakeFiles/Nest_autogen:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/qlu/Documents/random_drop_CPFA/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC for target Nest"
-	cd /home/qlu/Documents/random_drop_CPFA/build/source/Base && /usr/bin/cmake -E cmake_autogen /home/qlu/Documents/random_drop_CPFA/build/source/Base/CMakeFiles/Nest_autogen.dir/AutogenInfo.json Release
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/mnt/c/Users/josia/Downloads/final_project_6371/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC for target Nest"
+	cd /mnt/c/Users/josia/Downloads/final_project_6371/build/source/Base && /usr/bin/cmake -E cmake_autogen /mnt/c/Users/josia/Downloads/final_project_6371/build/source/Base/CMakeFiles/Nest_autogen.dir/AutogenInfo.json Release
 
 Nest_autogen: source/Base/CMakeFiles/Nest_autogen
 Nest_autogen: source/Base/CMakeFiles/Nest_autogen.dir/build.make
@@ -82,10 +82,10 @@ source/Base/CMakeFiles/Nest_autogen.dir/build: Nest_autogen
 .PHONY : source/Base/CMakeFiles/Nest_autogen.dir/build
 
 source/Base/CMakeFiles/Nest_autogen.dir/clean:
-	cd /home/qlu/Documents/random_drop_CPFA/build/source/Base && $(CMAKE_COMMAND) -P CMakeFiles/Nest_autogen.dir/cmake_clean.cmake
+	cd /mnt/c/Users/josia/Downloads/final_project_6371/build/source/Base && $(CMAKE_COMMAND) -P CMakeFiles/Nest_autogen.dir/cmake_clean.cmake
 .PHONY : source/Base/CMakeFiles/Nest_autogen.dir/clean
 
 source/Base/CMakeFiles/Nest_autogen.dir/depend:
-	cd /home/qlu/Documents/random_drop_CPFA/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/qlu/Documents/random_drop_CPFA /home/qlu/Documents/random_drop_CPFA/source/Base /home/qlu/Documents/random_drop_CPFA/build /home/qlu/Documents/random_drop_CPFA/build/source/Base /home/qlu/Documents/random_drop_CPFA/build/source/Base/CMakeFiles/Nest_autogen.dir/DependInfo.cmake --color=$(COLOR)
+	cd /mnt/c/Users/josia/Downloads/final_project_6371/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /mnt/c/Users/josia/Downloads/final_project_6371 /mnt/c/Users/josia/Downloads/final_project_6371/source/Base /mnt/c/Users/josia/Downloads/final_project_6371/build /mnt/c/Users/josia/Downloads/final_project_6371/build/source/Base /mnt/c/Users/josia/Downloads/final_project_6371/build/source/Base/CMakeFiles/Nest_autogen.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : source/Base/CMakeFiles/Nest_autogen.dir/depend
 
