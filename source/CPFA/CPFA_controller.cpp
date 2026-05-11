@@ -22,7 +22,8 @@ CPFA_controller::CPFA_controller() :
     m_pcLEDs(NULL),
         updateFidelity(false),
     RobotID(0),
-	share_count(0)
+	share_count(0),
+	SiteFidelityTimestamp(0)
 {
 	SharedWithID.clear();
 }
@@ -540,6 +541,8 @@ void CPFA_controller::PheromoneSharing() {
 		// Check for nearby robots within 1 meter
 		argos::CSpace::TMapPerType& footbots = LoopFunctions->GetSpace().GetEntitiesByType("foot-bot");
 		argos::CSpace::TMapPerType::iterator it;
+		MessageType message;
+		message.timestamp = SiteFidelityTimestamp; // Include the time at which the site fidelity position was last updated in the message so that receiving robots can calculate how much the pheromone strength should decay based on how long ago the information was shared
 		for(it = footbots.begin(); it != footbots.end(); ++it) {
 			argos::CFootBotEntity& footBot = *argos::any_cast<argos::CFootBotEntity*>(it->second);
 			if(footBot.GetId() == GetId()) continue; // skip self
@@ -550,7 +553,7 @@ void CPFA_controller::PheromoneSharing() {
 			// GetEmbodiedEntity().GetOriginAnchor().Position gives a CVector3
 			argos::CVector3 otherPos3d = footBot.GetEmbodiedEntity().GetOriginAnchor().Position;
 			argos::CVector2 otherPos2d(otherPos3d.GetX(), otherPos3d.GetY());
-			if(argos::Distance(GetPosition(), otherPos2d) < 1.0) {
+			if(argos::Distance(GetPosition(), otherPos2d) < 2.0) {
 				// Retrieve the other robot's numeric mailbox ID from its controller
 				CPFA_controller& other = dynamic_cast<CPFA_controller&>(
 					footBot.GetControllableEntity().GetController());
@@ -560,11 +563,11 @@ void CPFA_controller::PheromoneSharing() {
 				//	<< " with robot " << footBot.GetId()
 				//     << " (mailbox " << targetMailbox << ")"
 				//     << " at distance " << argos::Distance(GetPosition(), otherPos2d) << endl;
-				MessageType message;
+				
 				message.trail = SiteFidelityPosition;
 				message.strength = ResourceDensity;
 				message.decayRate = LoopFunctions->RateOfPheromoneDecay;
-				message.timestamp = LoopFunctions->getSimTimeInSeconds();
+				
 				LoopFunctions->SendMessage(message, targetMailbox);
 
 				//update pheromone sharing information
@@ -576,13 +579,14 @@ void CPFA_controller::PheromoneSharing() {
 					break;
 				}else{
 					ResourceDensity = ResourceDensity * exp(-LoopFunctions->RateOfPheromoneDecay * (1 + share_count)); // Reduce the strength of the pheromone trail after sharing (this models the idea that sharing information reduces the amount of information you have)
+					//ResourceDensity = ResourceDensity * exp(-LoopFunctions->RateOfPheromoneDecay * (1 + share_count)); // Reduce the strength of the pheromone trail after sharing (this models the idea that sharing information reduces the amount of information you have)
 				}
-				//LoopFunctions->DecayAndPruneMailbox(LoopFunctions->getMessageQueue(), GetRobotID(), LoopFunctions->getSimTimeInSeconds());
+				LoopFunctions->DecayAndPruneMailbox(LoopFunctions->getMessageQueue(), GetRobotID(), LoopFunctions->getSimTimeInSeconds());
 
 				//hasMidRouteShared = true;
 				SharedWithID[footBot.GetId()] = true;
 				share_count++;
-				break;
+				//break;
 			}
 		}
 	}
@@ -623,6 +627,7 @@ void CPFA_controller::PheromoneSharing() {
 			argos::CVector3 fromPos(GetPosition().GetX(), GetPosition().GetY(), msgRayHeight);
 			argos::CVector3 toPos(strongestMessage.trail.GetX(), strongestMessage.trail.GetY(), msgRayHeight);
 			LoopFunctions->PheromoneShared.push_back(argos::CRay3(fromPos, toPos));
+			// set random color
 			LoopFunctions->PheromoneSharedColor.push_back(argos::CColor::MAGENTA);
 		}
 
@@ -818,6 +823,7 @@ void CPFA_controller::SetHoldingFood() {
          LoopFunctions->FoodList = newFoodList;
          LoopFunctions->FoodColoringList = newFoodColoringList; //qilu 09/12/2016
          SetLocalResourceDensity();
+         SiteFidelityTimestamp = LoopFunctions->getSimTimeInSeconds();
       }
 	}
 		

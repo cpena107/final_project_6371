@@ -56,6 +56,7 @@ class CPFA_controller : public BaseController {
 		argos::CVector2 PheromoneShared; // position of the shared pheromone
 		std::map<std::string, bool> SharedWithID; // IDs of robots this robot has shared with (to prevent sharing the same pheromone trail with the same robot multiple times)
 		size_t share_count;
+		argos::Real SiteFidelityTimestamp; // the time at which the robot last updated its site fidelity position
 
 		/* robot position variables */
 		argos::CVector2 SiteFidelityPosition;

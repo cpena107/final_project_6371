@@ -322,11 +322,17 @@ def plot_distribution(distribution: str,
     print(f"Saved {out_prefix}.{{png,pdf,svg}}")
 
 
-def load_milestone_times(group: str, milestone: float, distribution: str) -> pd.Series:
-    """Return cumulative_time at a given milestone percent for each seed in a group."""
+def load_milestone_times(group: str, milestone: float, distribution: str, fill_value: float = 720.0) -> pd.Series:
+    """Return cumulative_time at a given milestone percent for each seed in a group.
+    Seeds that never reached the milestone are filled with fill_value."""
     df = _load_group(distribution, group)
-    completed = df[df["milestone_percent"].round(1) == milestone]["cumulative_time"]
-    return completed.reset_index(drop=True)
+    all_seeds = df['random_seed'].unique()
+    at_milestone = (
+        df[df["milestone_percent"].round(1) == milestone]
+        .set_index('random_seed')['cumulative_time']
+    )
+    filled = at_milestone.reindex(all_seeds, fill_value=fill_value)
+    return filled.reset_index(drop=True)
 
 def main(baseline: str = "CPFA", algorithm: str = "PPSA", distribution: str = "cluster_distribution"):
     results_baseline_new = []
@@ -343,21 +349,27 @@ def main(baseline: str = "CPFA", algorithm: str = "PPSA", distribution: str = "c
             print(f"Not enough data for milestone {milestone}%")
             continue
 
-        t_stat, p_val = ttest_ind(baseline_data, algorithm_data, equal_var=False)
         results_baseline_new.append(
             {
                 "milestone_percent": f"{int(milestone)}\\%",
                 "baseline_mean": round(baseline_data.mean(), 2),
                 "algorithm_mean": round(algorithm_data.mean(), 2),
-                #"t_statistic": round(t_stat, 4),
-                "p_value_baseline_new": p_val,
-                #"significant (p<0.05)": p_val < 0.05,
             }
         )
         
     if not results_baseline_new:
         print("No results to display.")
         return
+
+    # Add average highest milestone row
+    hm_data = load_highest_milestone_data(distribution, baseline, algorithm)
+    b_highest = hm_data[hm_data['Experiment Type'] == baseline]['highest_milestone'].values
+    a_highest = hm_data[hm_data['Experiment Type'] == algorithm]['highest_milestone'].values
+    results_baseline_new.append({
+        "milestone_percent": "Avg. Highest",
+        "baseline_mean": round(float(b_highest.mean()), 2),
+        "algorithm_mean": round(float(a_highest.mean()), 2),
+    })
 
     df_results_baseline_new = pd.DataFrame(results_baseline_new)
     pd.set_option("display.float_format", "{:.4f}".format)
@@ -370,8 +382,8 @@ def main(baseline: str = "CPFA", algorithm: str = "PPSA", distribution: str = "c
     #print(f"\nResults saved to {out_path}")
 
 
-    algorithm_label = "GPFA"
-    baseline_label = "PPSA"
+    algorithm_label = "PPSA"
+    baseline_label = "CPFA"
     if distribution == "random_distribution":
         distribution_label = "Random"
     elif distribution == "cluster_distribution":
@@ -388,13 +400,16 @@ def main(baseline: str = "CPFA", algorithm: str = "PPSA", distribution: str = "c
     # LaTeX output
     try:
         latex_df = df_results_baseline_new.copy()
-        latex_df["p_value_baseline_new"] = latex_df["p_value_baseline_new"].apply(lambda x: f"{x:.4f}" if x >= 0.05 else f"\\textbf{{{x:.4f}}}" if x >= 0.0001 else "\\textbf{<0.0001}")
         latex_df["baseline_mean"] = latex_df["baseline_mean"].apply(lambda x: f"{x:.2f}")
         latex_df["algorithm_mean"] = latex_df["algorithm_mean"].apply(lambda x: f"{x:.2f}")
-        latex_df.columns = ["Milestone", f"\\begin{{tabular}}[c]{{@{{}}c@{{}}}}{baseline_label} \\\\ Means \\end{{tabular}}", f"\\begin{{tabular}}[c]{{@{{}}c@{{}}}}{algorithm_label} \\\\ Means \\end{{tabular}}", f"\\begin{{tabular}}{{@{{}}c@{{}}}} p-value \\\\ ({baseline_label} vs {algorithm_label}) \\end{{tabular}}"]
+        latex_df.columns = [
+            "Milestone",
+            f"\\begin{{tabular}}[c]{{@{{}}c@{{}}}}{baseline_label} \\\\ Means \\end{{tabular}}",
+            f"\\begin{{tabular}}[c]{{@{{}}c@{{}}}}{algorithm_label} \\\\ Means \\end{{tabular}}",
+        ]
         latex_str = latex_df.to_latex(
             index=False,
-            column_format="|l|c|c|c|c|c|l|",
+            column_format="|l|c|c|",
             escape=False,
             caption=f"Experiment: {baseline_label} and {algorithm_label}  Algorithm by ({distribution_label})",
             label=f"tab:ttest_milestones_results_{baseline}_{algorithm}_{distribution}",
@@ -415,23 +430,16 @@ def latex_highest_milestone_combined(
         data = load_highest_milestone_data(dist_key, baseline, algorithm)
         b_vals = data[data['Experiment Type'] == baseline]['highest_milestone'].values
         a_vals = data[data['Experiment Type'] == algorithm]['highest_milestone'].values
-        _, p = ttest_ind(b_vals, a_vals, equal_var=False)
-        p_fmt = (
-            f"{p:.4f}" if p >= 0.05
-            else f"\\textbf{{{p:.4f}}}" if p >= 0.0001
-            else "\\textbf{<0.0001}"
-        )
         rows.append({
             "Distribution": dist_label,
             f"{baseline} Mean (\\%)": f"{b_vals.mean():.2f}",
             f"{algorithm} Mean (\\%)": f"{a_vals.mean():.2f}",
-            f"p-value ({baseline} vs {algorithm})": p_fmt,
         })
 
     df = pd.DataFrame(rows)
     latex_str = df.to_latex(
         index=False,
-        column_format="|l|c|c|c|",
+        column_format="|l|c|c|",
         escape=False,
         caption=(
             f"Average highest milestone reached per distribution "
