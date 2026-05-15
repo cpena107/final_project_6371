@@ -58,7 +58,7 @@
                 RateOfInformedSearchDecay="0.205799848158" 
                 RateOfLayingPheromone="14.7027566005" 
                 RateOfPheromoneDecay="0.0245057227138" 
-                RateOfSiteFidelity="14.1514206414" 
+                RateOfSiteFidelity="4.1514206414" 
                 UninformedSearchVariation="2.81939731297"
         />
 
